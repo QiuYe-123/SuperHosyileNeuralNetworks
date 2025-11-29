@@ -1,0 +1,71 @@
+[versions]
+registrate = "MC1.20-1.3.11"
+configuration = "3.1.0-forge"
+kotlinforforge = "4.11.0"
+gtm = "7.3.0"
+mixinExtras = "0.5.0-rc.3"
+
+jei = "15.20.0.121"
+emi = "1.1.22+1.20.1"
+ae2 = "15.4.10"
+guideme = "20.1.11"
+architectury = "9.2.14"
+curios = "5.9.1+1.20.1"
+shimmer = "1.20.1-0.2.4"
+
+## ftb mod ##
+ftblibrary = "2001.2.10"
+ftbteams = "2001.3.1"
+
+## modrinth maven ##
+jade = "11.13.2+forge"
+embeddium = "0.3.31+mc1.20.1"
+oculus = "1.20.1-1.8.0"
+ferritecore = "6.0.1"
+modernui = "6ksT8CWg" #3.12.0.1
+modernfix = "5.24.4+mc1.20.1"
+
+## curseforge maven ##
+placebo = "6274231"
+hnn = "5895036"
+
+## libs ##
+jech = "4.5.11-dev-shadow"
+ehnn = "1.1.2"
+
+
+[libraries]
+registrate          = { module = "com.tterrag.registrate:Registrate", version.ref = "registrate" }
+configuration       = { module = "dev.toma.configuration:configuration-1.20.1", version.ref = "configuration" }
+kotlinforforge      = { module = "thedarkcolour:kotlinforforge", version.ref = "kotlinforforge" }
+gtm                 = { module = "com.gregtechceu.gtceu:gtceu-1.20.1", version.ref = "gtm"}
+mixinExtras-common  = { module = "io.github.llamalad7:mixinextras-common", version.ref = "mixinExtras" }
+
+jei-common-api      = { module = "mezz.jei:jei-1.20.1-common-api", version.ref = "jei" }
+jei-forge-api       = { module = "mezz.jei:jei-1.20.1-forge-api", version.ref = "jei" }
+jei-forge-impl      = { module = "mezz.jei:jei-1.20.1-forge", version.ref = "jei" }
+emi                 = { module = "dev.emi:emi-forge", version.ref = "emi" }
+
+ftblibrary          = { module = "dev.ftb.mods:ftb-library-forge", version.ref = "ftblibrary" }
+ftbteams            = { module = "dev.ftb.mods:ftb-teams-forge", version.ref = "ftbteams" }
+
+ae2                 = { module = "appeng:appliedenergistics2-forge", version.ref = "ae2" }
+guideme             = { module = "org.appliedenergistics:guideme", version.ref = "guideme" }
+architectury        = { module = "dev.architectury:architectury-forge", version.ref = "architectury" }
+curios              = { module = "top.theillusivec4.curios:curios-forge", version.ref = "curios" }
+shimmer             = { module = "com.lowdragmc.shimmer:Shimmer-forge", version.ref = "shimmer" }
+jade                = { module = "maven.modrinth:jade", version.ref = "jade" }
+embeddium           = { module = "maven.modrinth:embeddium", version.ref = "embeddium" }
+oculus              = { module = "maven.modrinth:oculus", version.ref = "oculus" }
+ferritecore         = { module = "maven.modrinth:uXXizFIs", version.ref = "ferritecore" }
+modernfix           = { module = "maven.modrinth:modernfix", version.ref = "modernfix" }
+modernui            = { module = "maven.modrinth:modern-ui", version.ref = "modernui" }
+
+placebo             = { module = "curse.maven:placebo-283644", version.ref = "placebo" }
+hnn                 = { module = "curse.maven:hostile-neural-networks-552574", version.ref = "hnn" }
+
+
+jecharacters        = { module = "dev:jecharacters-1.20.1-forge", version.ref = "jech" }
+ehnn                = { module = "dev:extrahnn-1.20.1", version.ref = "ehnn" }
+[bundles]
+jei = ["jei-common-api", "jei-forge-api", "jei-forge-impl"]

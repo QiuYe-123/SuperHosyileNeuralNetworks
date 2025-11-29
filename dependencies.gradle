@@ -1,0 +1,66 @@
+dependencies {
+    compileOnly(libs.jetbrains.annotations)
+
+    modClientLocalRuntime(forge.jecharacters.get())
+
+    // Mixin (& Extras)
+    annotationProcessor(variantOf(libs.mixin) { classifier("processor") })
+    api(annotationProcessor(forge.mixinExtras.common.get()))
+
+    // Configuration
+    modCompileOnly(forge.configuration)
+
+    // Hostile Neural Networks
+    modCompileOnly(forge.placebo)
+    modCompileOnly(forge.hnn)
+    modCompileOnly(forge.ehnn)
+
+    // Recipe Viewers
+    modCompileOnly(forge.bundles.jei)
+    modCompileOnly(forge.emi)
+
+    // WAILA-likes
+    modCompileOnly(forge.jade)
+
+    // FTB
+    modCompileOnly(forge.architectury)
+
+    modCompileOnly(forge.ftblibrary)
+    modCompileOnly(forge.ftbteams)
+
+    // Standard runtime mods //
+    modLocalRuntime(forge.jade)
+    modLocalRuntime(forge.curios)
+    modLocalRuntime(forge.modernfix)
+    modLocalRuntime(forge.ferritecore)
+
+    // FTB //
+    modLocalRuntime(forge.architectury)
+    modLocalRuntime(forge.ftblibrary)
+    modLocalRuntime(forge.ftbteams)
+
+    // configuration //
+    modLocalRuntime(forge.configuration)
+
+    // Hostile Neural Networks
+    modLocalRuntime(forge.placebo)
+    modLocalRuntime(forge.hnn)
+    modLocalRuntime(forge.ehnn)
+
+    // Runtime Recipe Viewers - uncomment whichever one you want to use //
+    modLocalRuntime(forge.emi)
+    modLocalRuntime(forge.jei.forge.impl)
+
+    // Client-only runtime mods //
+    modClientLocalRuntime(forge.embeddium)
+    modClientLocalRuntime(forge.oculus)
+    modClientLocalRuntime(forge.modernui)
+    renderNurseCfg(libs.renderNurse)
+
+//    // Mouse Tweaks
+//    modRuntimeOnly("curse.maven:mouse-tweaks-60089:5338457")
+
+//    // WorldEdit
+//    modRuntimeOnly("curse.maven:worldedit-225608:4586218")
+
+}
