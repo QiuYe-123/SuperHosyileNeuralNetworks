@@ -6,10 +6,7 @@ import dev.shadowsoffire.hostilenetworks.data.DataModelRegistry;
 import dev.shadowsoffire.hostilenetworks.item.DataModelItem;
 import dev.shadowsoffire.placebo.reload.DynamicHolder;
 import dev.shadowsoffire.placebo.screen.PlaceboContainerScreen;
-
 import net.lmor.extrahnn.ExtraHostileConfig;
-import net.lmor.extrahnn.ExtraHostileNetworks;
-
 import net.minecraft.MethodsReturnNonnullByDefault;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.Font;
@@ -24,20 +21,19 @@ import net.minecraft.util.Mth;
 import net.minecraft.world.entity.player.Inventory;
 import net.minecraft.world.item.ItemStack;
 
+import javax.annotation.ParametersAreNonnullByDefault;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 import java.util.stream.Stream;
 
-import javax.annotation.ParametersAreNonnullByDefault;
-
 @MethodsReturnNonnullByDefault
 @ParametersAreNonnullByDefault
 public class SuperLootFabScreen extends PlaceboContainerScreen<SuperLootFabContainer> {
 
-    private static final int WIDTH = 176;
-    private static final int HEIGHT = 178;
-    private static final ResourceLocation BASE = SHNN.id("textures/gui/super_loot_fabricator.png");
+    private static final int WIDTH = 254;
+    private static final int HEIGHT = 214;
+    private static final ResourceLocation BASE = SHNN.id("textures/gui/super_loot_fabricator_plus.png");
     private static final ResourceLocation PLAYER = SHNN.id("textures/gui/inventory.png");
     private DynamicHolder<DataModel> model;
     private int currentPage;
@@ -52,6 +48,7 @@ public class SuperLootFabScreen extends PlaceboContainerScreen<SuperLootFabConta
         this.imageHeight = HEIGHT;
     }
 
+    @Override
     public void render(GuiGraphics gfx, int pMouseX, int pMouseY, float pPartialTicks) {
         this.model = DataModelItem.getStoredModel(this.menu.getSlot(0).getItem());
         if (this.model.isBound()) {
@@ -65,25 +62,29 @@ public class SuperLootFabScreen extends PlaceboContainerScreen<SuperLootFabConta
         super.render(gfx, pMouseX, pMouseY, pPartialTicks);
     }
 
+    @Override
     public void init() {
         super.init();
-        this.btnLeft = this.addRenderableWidget(new ImageButton(this.getGuiLeft() + 13, this.getGuiTop() + 68, 29, 12, 49, 83, 12, BASE, (btn) -> {
+        this.btnLeft = this.addRenderableWidget(new ImageButton(this.getGuiLeft() + 13, this.getGuiTop() + 105, 29, 12, 49, 119, 12, BASE, (btn) -> {
             if (this.model.isBound() && this.currentPage > 0) {
                 --this.currentPage;
             }
 
         }));
-        this.btnRight = this.addRenderableWidget(new ImageButton(this.getGuiLeft() + 46, this.getGuiTop() + 68, 29, 12, 78, 83, 12, BASE, (btn) -> {
+        this.btnRight = this.addRenderableWidget(new ImageButton(this.getGuiLeft() + 46, this.getGuiTop() + 105, 29, 12, 78, 119, 12, BASE, (btn) -> {
             if (this.model.isBound() && this.currentPage < this.model.get().fabDrops().size() / 9) {
                 ++this.currentPage;
             }
         }));
     }
 
-    protected void renderLabels(GuiGraphics gfx, int pX, int pY) {}
+    @Override
+    protected void renderLabels(GuiGraphics gfx, int pX, int pY) {
+    }
 
+    @Override
     protected void renderTooltip(GuiGraphics gfx, int pX, int pY) {
-        if (this.isHovering(6, 10, 7, 53, pX, pY)) {
+        if (this.isHovering(6, 10, 7, 89, pX, pY)) {
             List<Component> txt = new ArrayList<>(2);
             txt.add(Component.translatable("hostilenetworks.gui.energy", this.menu.getEnergyStored(), ExtraHostileConfig.ultimateFabPowerCap));
             txt.add(Component.translatable("hostilenetworks.gui.fab_cost", ExtraHostileConfig.ultimateFabPowerCost));
@@ -92,7 +93,7 @@ public class SuperLootFabScreen extends PlaceboContainerScreen<SuperLootFabConta
 
         if (this.model.isBound()) {
             int selection = this.menu.getSelectedDrop(this.model.get());
-            if (selection != -1 && this.isHovering(79, 5, 16, 16, pX, pY)) {
+            if (selection != -1 && this.isHovering(85, 5, 16, 16, pX, pY)) {
                 gfx.renderComponentTooltip(this.font, List.of(Component.translatable("hostilenetworks.gui.clear")), pX, pY);
             }
 
@@ -111,6 +112,7 @@ public class SuperLootFabScreen extends PlaceboContainerScreen<SuperLootFabConta
         super.renderTooltip(gfx, pX, pY);
     }
 
+    @Override
     public boolean mouseClicked(double pX, double pY, int pButton) {
         if (this.model.isBound()) {
             List<ItemStack> drops = this.model.get().fabDrops();
@@ -134,6 +136,7 @@ public class SuperLootFabScreen extends PlaceboContainerScreen<SuperLootFabConta
         return super.mouseClicked(pX, pY, pButton);
     }
 
+    @Override
     protected void renderBg(GuiGraphics gfx, float pPartialTicks, int pX, int pY) {
         int left = this.getGuiLeft();
         int top = this.getGuiTop();
@@ -142,34 +145,34 @@ public class SuperLootFabScreen extends PlaceboContainerScreen<SuperLootFabConta
                 top,
                 0.0F,
                 0.0F,
-                176,
-                83,
+                254,
+                119,
                 256,
                 256);
 
-        int energyHeight = Mth.floor(53.0F * ((float) this.menu.getEnergyStored() / (float) ExtraHostileConfig.ultimateFabPowerCap));
+        int energyHeight = Mth.floor(89.0F * ((float) this.menu.getEnergyStored() / ExtraHostileConfig.ultimateFabPowerCap));
         gfx.blit(BASE,
                 left + 6,
-                top + 10 + 53 - energyHeight,
+                top + 10 + 89 - energyHeight,
                 0.0F,
-                83.0F,
+                119.0F,
                 7,
                 energyHeight,
                 256,
                 256);
 
-        int progHeight = Mth.floor(35.0F * (float) this.menu.getRuntime() / ExtraHostileConfig.ultimateFabPowerDuration);
+        int progHeight = Mth.floor(71.0F * ((float) this.menu.getRuntime() / ExtraHostileConfig.ultimateFabPowerDuration));
         gfx.blit(BASE,
-                left + 84,
-                top + 23 + 35 - progHeight,
+                left + 90,
+                top + 23 + 71 - progHeight,
                 7.0F,
-                83.0F,
+                119.0F,
                 6, progHeight,
                 256,
                 256);
         gfx.blit(PLAYER,
-                left,
-                top + 84,
+                left + 39,
+                top + 120,
                 0.0F,
                 0.0F,
                 176,
@@ -182,23 +185,23 @@ public class SuperLootFabScreen extends PlaceboContainerScreen<SuperLootFabConta
 
             int selection;
             int x;
-            for (selection = 0; selection < 3; ++selection) {
+            for (selection = 0; selection < 5; ++selection) {
                 for (x = 0; x < 3; ++x) {
-                    if (selection * 3 + x < Math.min(drops.size() - this.currentPage * 9, 9) && this.isHovering(18 + 18 * x, 10 + 18 * selection, 16, 16, pX, pY)) {
-                        gfx.blit(BASE, left + 16 + 19 * x, top + 8 + 19 * selection, 13.0F, 83.0F, 18, 18, 256, 256);
+                    if (selection * 3 + x < Math.min(drops.size() - this.currentPage * 15, 15) && this.isHovering(18 + 18 * x, 10 + 18 * selection, 16, 16, pX, pY)) {
+                        gfx.blit(BASE, left + 16 + 19 * x, top + 8 + 19 * selection, 13.0F, 119.0F, 18, 18, 256, 256);
                     }
                 }
             }
 
             selection = this.menu.getSelectedDrop(this.model.get());
-            if (selection != -1 && selection / 9 == this.currentPage) {
-                x = selection - this.currentPage * 9;
-                gfx.blit(BASE, left + 16 + 19 * (x % 3), top + 8 + 19 * (x / 3), 31.0F, 83.0F, 18, 18, 256, 256);
+            if (selection != -1 && selection / 15 == this.currentPage) {
+                x = selection - this.currentPage * 15;
+                gfx.blit(BASE, left + 16 + 19 * (x % 3), top + 8 + 19 * (x / 3), 31.0F, 119.0F, 18, 18, 256, 256);
             }
 
             if (selection != -1) {
-                gfx.renderItem(drops.get(selection), left + 79, top + 5);
-                gfx.renderItemDecorations(this.font, drops.get(selection), left + 79 - 1, top + 5 - 1);
+                gfx.renderItem(drops.get(selection), left + 85, top + 5);
+                gfx.renderItemDecorations(this.font, drops.get(selection), left + 85 - 1, top + 5 - 1);
             }
 
             left += 17;
@@ -206,9 +209,9 @@ public class SuperLootFabScreen extends PlaceboContainerScreen<SuperLootFabConta
             x = 0;
             int y = 0;
 
-            for (int i = 0; i < Math.min(drops.size() - this.currentPage * 9, 9); ++i) {
-                gfx.renderItem(drops.get(i + this.currentPage * 9), left + x * 19, top + y * 19);
-                gfx.renderItemDecorations(this.font, drops.get(i + this.currentPage * 9), left + x * 19 - 1, top + y * 19 - 1);
+            for (int i = 0; i < Math.min(drops.size() - this.currentPage * 15, 15); ++i) {
+                gfx.renderItem(drops.get(i + this.currentPage * 15), left + x * 19, top + y * 19);
+                gfx.renderItemDecorations(this.font, drops.get(i + this.currentPage * 15), left + x * 19 - 1, top + y * 19 - 1);
                 ++x;
                 if (x == 3) {
                     ++y;

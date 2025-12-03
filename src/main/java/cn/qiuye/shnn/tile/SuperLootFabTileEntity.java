@@ -144,7 +144,7 @@ public class SuperLootFabTileEntity extends BlockEntity implements TickingBlockE
 
     protected boolean insertInOutput(ItemStack stack, boolean sim) {
         int amount = stack.getCount();
-        for (int i = 1; i < 17; ++i) {
+        for (int i = 1; i < 37; ++i) {
             ItemStack slotStack = this.inventory.getStackInSlot(i);
             ItemStack insertItem = stack.copy();
             if (slotStack.isEmpty()) {
@@ -276,7 +276,7 @@ public class SuperLootFabTileEntity extends BlockEntity implements TickingBlockE
     public class FabItemHandler extends InternalItemHandler {
 
         public FabItemHandler() {
-            super(17);
+            super(37);
         }
 
         public boolean isItemValid(int slot, ItemStack stack) {
