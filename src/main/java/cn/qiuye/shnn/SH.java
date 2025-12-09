@@ -51,6 +51,7 @@ public class SH {
     public static class Items {
 
         public static final RegistryObject<BlockItem> ULTIMATE_LOOT_FABRICATOR = SH.R.item("super_loot_fabricator", () -> new BlockItem(Blocks.ULTIMATE_LOOT_FABRICATOR.get(), new Item.Properties()));
+        public static final RegistryObject<Item> UPGRADE = SH.R.item("upgrade", () -> new Item(new Item.Properties()));
         public static final RegistryObject<UpgradeMachine> UPGRADE_SPEED = SH.R.item("upgrade_speed", () -> new UpgradeMachine(new Item.Properties(), Component.translatable("shnn.info.item_tooltip.upgrade_speed", SHNNConfig.upgradeSpeed).withStyle(ChatFormatting.GRAY)));
         public static final RegistryObject<UpgradeMachine> UPGRADE_EXCESSIVE = SH.R.item("upgrade_excessive", () -> new UpgradeMachine(new Item.Properties(), Component.translatable("shnn.info.item_tooltip.upgrade_excessive", SHNNConfig.upgradeSpeed).withStyle(ChatFormatting.GRAY)));
 

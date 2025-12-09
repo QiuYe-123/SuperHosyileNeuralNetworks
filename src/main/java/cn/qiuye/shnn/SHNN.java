@@ -46,7 +46,7 @@ public class SHNN {
         e.enqueueWork(() -> {
             LootSystem.defaultBlockTable(SH.Blocks.ULTIMATE_LOOT_FABRICATOR.get());
             TabFillingRegistry.register(SH.Tabs.SHNN_TAB_KEY, SH.Items.ULTIMATE_LOOT_FABRICATOR,
-                    SH.Items.UPGRADE_SPEED,SH.Items.UPGRADE_EXCESSIVE);
+                    SH.Items.UPGRADE_SPEED,SH.Items.UPGRADE_EXCESSIVE,SH.Items.UPGRADE);
         });
     }
 
