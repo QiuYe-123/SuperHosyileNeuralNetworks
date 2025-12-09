@@ -8,6 +8,7 @@ import dev.shadowsoffire.hostilenetworks.item.MobPredictionItem;
 import dev.shadowsoffire.placebo.menu.BlockEntityMenu;
 import dev.shadowsoffire.placebo.menu.FilteredSlot;
 import dev.shadowsoffire.placebo.reload.DynamicHolder;
+import net.lmor.extrahnn.item.UpgradeMachine;
 import net.minecraft.MethodsReturnNonnullByDefault;
 import net.minecraft.core.BlockPos;
 import net.minecraft.world.entity.player.Inventory;
@@ -35,6 +36,10 @@ public class SuperLootFabContainer extends BlockEntityMenu<SuperLootFabTileEntit
             for (int x = 0; x < 6; ++x) {
                 this.addSlot(new FilteredSlot(inv, 1 + y * 6 + x, 113 + x * 18, 7 + y * 18, (s) -> false));
             }
+        }
+
+        for (int x = 0; x < 6; ++x) {
+            this.addSlot(new FilteredSlot(inv, 2, -13, 39, (s) -> s.getItem() instanceof UpgradeMachine));
         }
 
         this.addPlayerSlots(pInv, 47, 128);
