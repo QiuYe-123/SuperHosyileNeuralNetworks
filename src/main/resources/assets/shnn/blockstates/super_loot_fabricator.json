@@ -1,0 +1,19 @@
+{
+  "variants": {
+    "facing=east": {
+      "model": "shnn:block/super_loot_fabricator",
+      "y": 90
+    },
+    "facing=north": {
+      "model": "shnn:block/super_loot_fabricator"
+    },
+    "facing=south": {
+      "model": "shnn:block/super_loot_fabricator",
+      "y": 180
+    },
+    "facing=west": {
+      "model": "shnn:block/super_loot_fabricator",
+      "y": 270
+    }
+  }
+}

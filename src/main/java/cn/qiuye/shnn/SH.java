@@ -9,7 +9,6 @@ import dev.shadowsoffire.placebo.block_entity.TickingBlockEntityType;
 import dev.shadowsoffire.placebo.menu.MenuUtil;
 import dev.shadowsoffire.placebo.registry.DeferredHelper;
 
-import net.lmor.extrahnn.ExtraHostileConfig;
 import net.lmor.extrahnn.item.UpgradeMachine;
 import net.minecraft.ChatFormatting;
 import net.minecraft.core.registries.Registries;
@@ -45,21 +44,14 @@ public class SH {
 
     public static class Blocks {
 
-        public static final RegistryObject<Block> ULTIMATE_LOOT_FABRICATOR_V1 = SH.R.block("super_loot_fabricator_v1", () -> new SuperLootFabBlock(DEFAULT_STATE, TileEntities.ULTIMATE_LOOT_FABRICATOR_V1::get, Containers.ULTIMATE_LOOT_FABRICATOR_V1::get, Version.V5));
-        public static final RegistryObject<Block> ULTIMATE_LOOT_FABRICATOR_V2 = SH.R.block("super_loot_fabricator_v2", () -> new SuperLootFabBlock(DEFAULT_STATE, TileEntities.ULTIMATE_LOOT_FABRICATOR_V2::get, Containers.ULTIMATE_LOOT_FABRICATOR_V2::get, Version.V6));
-        public static final RegistryObject<Block> ULTIMATE_LOOT_FABRICATOR_V3 = SH.R.block("super_loot_fabricator_v3", () -> new SuperLootFabBlock(DEFAULT_STATE, TileEntities.ULTIMATE_LOOT_FABRICATOR_V3::get, Containers.ULTIMATE_LOOT_FABRICATOR_V3::get, Version.V7));
-        public static final RegistryObject<Block> ULTIMATE_LOOT_FABRICATOR_V4 = SH.R.block("super_loot_fabricator_v4", () -> new SuperLootFabBlock(DEFAULT_STATE, TileEntities.ULTIMATE_LOOT_FABRICATOR_V4::get, Containers.ULTIMATE_LOOT_FABRICATOR_V4::get, Version.VMAX));
-
+        public static final RegistryObject<Block> ULTIMATE_LOOT_FABRICATOR = SH.R.block("super_loot_fabricator", () -> new SuperLootFabBlock(DEFAULT_STATE, TileEntities.ULTIMATE_LOOT_FABRICATOR::get, Containers.ULTIMATE_LOOT_FABRICATOR::get, Version.V5));
         private static void bootstrap() {}
     }
 
     public static class Items {
 
-        public static final RegistryObject<BlockItem> ULTIMATE_LOOT_FABRICATOR_V1 = SH.R.item("super_loot_fabricator_v1", () -> new BlockItem(Blocks.ULTIMATE_LOOT_FABRICATOR_V1.get(), new Item.Properties()));
-	    public static final RegistryObject<BlockItem> ULTIMATE_LOOT_FABRICATOR_V2 = SH.R.item("super_loot_fabricator_v2", () -> new BlockItem(Blocks.ULTIMATE_LOOT_FABRICATOR_V2.get(), new Item.Properties()));
-	    public static final RegistryObject<BlockItem> ULTIMATE_LOOT_FABRICATOR_V3 = SH.R.item("super_loot_fabricator_v3", () -> new BlockItem(Blocks.ULTIMATE_LOOT_FABRICATOR_V3.get(), new Item.Properties()));
-	    public static final RegistryObject<BlockItem> ULTIMATE_LOOT_FABRICATOR_V4 = SH.R.item("super_loot_fabricator_v4", () -> new BlockItem(Blocks.ULTIMATE_LOOT_FABRICATOR_V4.get(), new Item.Properties()));
-	    public static final RegistryObject<UpgradeMachine> UPGRADE_SPEED = SH.R.item("upgrade_speed", () -> new UpgradeMachine(new Item.Properties(), Component.translatable("shnn.info.item_tooltip.upgrade_speed", SHNNConfig.upgradeSpeed).withStyle(ChatFormatting.GRAY)));
+        public static final RegistryObject<BlockItem> ULTIMATE_LOOT_FABRICATOR = SH.R.item("super_loot_fabricator", () -> new BlockItem(Blocks.ULTIMATE_LOOT_FABRICATOR.get(), new Item.Properties()));
+        public static final RegistryObject<UpgradeMachine> UPGRADE_SPEED = SH.R.item("upgrade_speed", () -> new UpgradeMachine(new Item.Properties(), Component.translatable("shnn.info.item_tooltip.upgrade_speed", SHNNConfig.upgradeSpeed).withStyle(ChatFormatting.GRAY)));
         public static final RegistryObject<UpgradeMachine> UPGRADE_EXCESSIVE = SH.R.item("upgrade_excessive", () -> new UpgradeMachine(new Item.Properties(), Component.translatable("shnn.info.item_tooltip.upgrade_excessive", SHNNConfig.upgradeSpeed).withStyle(ChatFormatting.GRAY)));
 
         private static void bootstrap() {}
@@ -67,28 +59,21 @@ public class SH {
 
     public static class TileEntities {
 
-        public static final RegistryObject<BlockEntityType<SuperLootFabTileEntity>> ULTIMATE_LOOT_FABRICATOR_V1 = SH.R.blockEntity("super_loot_fabricator_v1", () -> new TickingBlockEntityType<>((pos, state) -> new SuperLootFabTileEntity(pos, state, TileEntities.ULTIMATE_LOOT_FABRICATOR_V1.get(), Version.V5), ImmutableSet.of(Blocks.ULTIMATE_LOOT_FABRICATOR_V1.get()), false, true));
-        public static final RegistryObject<BlockEntityType<SuperLootFabTileEntity>> ULTIMATE_LOOT_FABRICATOR_V2 = SH.R.blockEntity("super_loot_fabricator_v2", () -> new TickingBlockEntityType<>((pos, state) -> new SuperLootFabTileEntity(pos, state, TileEntities.ULTIMATE_LOOT_FABRICATOR_V2.get(), Version.V6), ImmutableSet.of(Blocks.ULTIMATE_LOOT_FABRICATOR_V2.get()), false, true));
-        public static final RegistryObject<BlockEntityType<SuperLootFabTileEntity>> ULTIMATE_LOOT_FABRICATOR_V3 = SH.R.blockEntity("super_loot_fabricator_v3", () -> new TickingBlockEntityType<>((pos, state) -> new SuperLootFabTileEntity(pos, state, TileEntities.ULTIMATE_LOOT_FABRICATOR_V3.get(), Version.V7), ImmutableSet.of(Blocks.ULTIMATE_LOOT_FABRICATOR_V3.get()), false, true));
-        public static final RegistryObject<BlockEntityType<SuperLootFabTileEntity>> ULTIMATE_LOOT_FABRICATOR_V4 = SH.R.blockEntity("super_loot_fabricator_v4", () -> new TickingBlockEntityType<>((pos, state) -> new SuperLootFabTileEntity(pos, state, TileEntities.ULTIMATE_LOOT_FABRICATOR_V4.get(), Version.VMAX), ImmutableSet.of(Blocks.ULTIMATE_LOOT_FABRICATOR_V4.get()), false, true));
+        public static final RegistryObject<BlockEntityType<SuperLootFabTileEntity>> ULTIMATE_LOOT_FABRICATOR = SH.R.blockEntity("super_loot_fabricator", () -> new TickingBlockEntityType<>((pos, state) -> new SuperLootFabTileEntity(pos, state, TileEntities.ULTIMATE_LOOT_FABRICATOR.get(), Version.V5), ImmutableSet.of(Blocks.ULTIMATE_LOOT_FABRICATOR.get()), false, true));
 
         private static void bootstrap() {}
     }
 
     public static class Containers {
 
-        public static final RegistryObject<MenuType<SuperLootFabContainer>> ULTIMATE_LOOT_FABRICATOR_V1 = SH.R.menu("super_loot_fabricator_v1", () -> MenuUtil.posType((id, pInv, pos) -> new SuperLootFabContainer(id, pInv, pos, Containers.ULTIMATE_LOOT_FABRICATOR_V1.get(), Blocks.ULTIMATE_LOOT_FABRICATOR_V1.get())));
-        public static final RegistryObject<MenuType<SuperLootFabContainer>> ULTIMATE_LOOT_FABRICATOR_V2 = SH.R.menu("super_loot_fabricator_v2", () -> MenuUtil.posType((id, pInv, pos) -> new SuperLootFabContainer(id, pInv, pos, Containers.ULTIMATE_LOOT_FABRICATOR_V2.get(), Blocks.ULTIMATE_LOOT_FABRICATOR_V2.get())));
-        public static final RegistryObject<MenuType<SuperLootFabContainer>> ULTIMATE_LOOT_FABRICATOR_V3 = SH.R.menu("super_loot_fabricator_v3", () -> MenuUtil.posType((id, pInv, pos) -> new SuperLootFabContainer(id, pInv, pos, Containers.ULTIMATE_LOOT_FABRICATOR_V3.get(), Blocks.ULTIMATE_LOOT_FABRICATOR_V3.get())));
-        public static final RegistryObject<MenuType<SuperLootFabContainer>> ULTIMATE_LOOT_FABRICATOR_V4 = SH.R.menu("super_loot_fabricator_v4", () -> MenuUtil.posType((id, pInv, pos) -> new SuperLootFabContainer(id, pInv, pos, Containers.ULTIMATE_LOOT_FABRICATOR_V4.get(), Blocks.ULTIMATE_LOOT_FABRICATOR_V4.get())));
-
+        public static final RegistryObject<MenuType<SuperLootFabContainer>> ULTIMATE_LOOT_FABRICATOR = SH.R.menu("super_loot_fabricator", () -> MenuUtil.posType((id, pInv, pos) -> new SuperLootFabContainer(id, pInv, pos, Containers.ULTIMATE_LOOT_FABRICATOR.get(), Blocks.ULTIMATE_LOOT_FABRICATOR.get())));
         private static void bootstrap() {}
     }
 
     public static class Tabs {
 
         public static final ResourceKey<CreativeModeTab> SHNN_TAB_KEY = ResourceKey.create(Registries.CREATIVE_MODE_TAB, SHNN.id("tab"));
-        public static final RegistryObject<CreativeModeTab> SHNN_TAB = SH.R.tab("tab", () -> CreativeModeTab.builder().title(Component.translatable("itemGroup.extrahnn")).icon(() -> (SH.Items.ULTIMATE_LOOT_FABRICATOR_V4.get()).getDefaultInstance()).build());
+        public static final RegistryObject<CreativeModeTab> SHNN_TAB = SH.R.tab("tab", () -> CreativeModeTab.builder().title(Component.translatable("itemGroup.extrahnn")).icon(() -> (SH.Items.ULTIMATE_LOOT_FABRICATOR.get()).getDefaultInstance()).build());
 
         private static void bootstrap() {}
     }

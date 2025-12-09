@@ -44,11 +44,9 @@ public class SHNN {
     @SubscribeEvent
     public void setup(FMLCommonSetupEvent e) {
         e.enqueueWork(() -> {
-            LootSystem.defaultBlockTable(SH.Blocks.ULTIMATE_LOOT_FABRICATOR_V1.get());
-            LootSystem.defaultBlockTable(SH.Blocks.ULTIMATE_LOOT_FABRICATOR_V2.get());
-            LootSystem.defaultBlockTable(SH.Blocks.ULTIMATE_LOOT_FABRICATOR_V3.get());
-            LootSystem.defaultBlockTable(SH.Blocks.ULTIMATE_LOOT_FABRICATOR_V4.get());
-            TabFillingRegistry.register(SH.Tabs.SHNN_TAB_KEY, SH.Items.ULTIMATE_LOOT_FABRICATOR_V1, SH.Items.ULTIMATE_LOOT_FABRICATOR_V2, SH.Items.ULTIMATE_LOOT_FABRICATOR_V3, SH.Items.ULTIMATE_LOOT_FABRICATOR_V4);
+            LootSystem.defaultBlockTable(SH.Blocks.ULTIMATE_LOOT_FABRICATOR.get());
+            TabFillingRegistry.register(SH.Tabs.SHNN_TAB_KEY, SH.Items.ULTIMATE_LOOT_FABRICATOR,
+                    SH.Items.UPGRADE_SPEED,SH.Items.UPGRADE_EXCESSIVE);
         });
     }
 

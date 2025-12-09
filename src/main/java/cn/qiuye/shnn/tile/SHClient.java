@@ -21,10 +21,7 @@ public class SHClient {
 
     @SubscribeEvent
     public static void init(FMLClientSetupEvent e) {
-        MenuScreens.register(SH.Containers.ULTIMATE_LOOT_FABRICATOR_V1.get(), SuperLootFabScreen::new);
-        MenuScreens.register(SH.Containers.ULTIMATE_LOOT_FABRICATOR_V2.get(), SuperLootFabScreen::new);
-        MenuScreens.register(SH.Containers.ULTIMATE_LOOT_FABRICATOR_V3.get(), SuperLootFabScreen::new);
-        MenuScreens.register(SH.Containers.ULTIMATE_LOOT_FABRICATOR_V4.get(), SuperLootFabScreen::new);
+        MenuScreens.register(SH.Containers.ULTIMATE_LOOT_FABRICATOR.get(), SuperLootFabScreen::new);;
     }
 
     @SubscribeEvent

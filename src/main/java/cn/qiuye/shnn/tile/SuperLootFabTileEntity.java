@@ -1,5 +1,6 @@
 package cn.qiuye.shnn.tile;
 
+import cn.qiuye.shnn.SH;
 import cn.qiuye.shnn.api.Version;
 
 import dev.shadowsoffire.hostilenetworks.Hostile;
@@ -26,6 +27,7 @@ import net.minecraft.resources.ResourceLocation;
 import net.minecraft.util.Mth;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.inventory.DataSlot;
+import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.entity.BlockEntity;
@@ -47,6 +49,7 @@ import javax.annotation.ParametersAreNonnullByDefault;
 @ParametersAreNonnullByDefault
 public class SuperLootFabTileEntity extends BlockEntity implements TickingBlockEntity, SimpleDataSlots.IDataAutoRegister, ISettingCard {
 
+    private final static int SIZE_SLOTS = 43;
     @Getter
     protected final FabItemHandler inventory = new FabItemHandler();
     protected final ModifiableEnergyStorage energy;
@@ -56,6 +59,9 @@ public class SuperLootFabTileEntity extends BlockEntity implements TickingBlockE
     protected int runtime;
     protected int currentSel;
     private boolean checkOutput = true;
+
+    private int upgradeSpeed;
+    private int upgradeExcessive;
 
     private Version version;
 
@@ -203,6 +209,16 @@ public class SuperLootFabTileEntity extends BlockEntity implements TickingBlockE
         this.version = Version.getVersion(tag.getString("versionBlockEntity"));
     }
 
+    public void checkUpgrade() {
+        upgradeSpeed = 0;
+        upgradeExcessive = 0;
+
+        for (int i = 1; i < SIZE_SLOTS; i++) {
+            Item upgrade = this.inventory.getStackInSlot(i).getItem();
+            if (upgrade == SH.Items.UPGRADE_SPEED.get()) upgradeSpeed += 1;
+            if (upgrade == SH.Items.UPGRADE_EXCESSIVE.get()) upgradeExcessive += 1;
+        }
+    }
     public ClientboundBlockEntityDataPacket getUpdatePacket() {
         return ClientboundBlockEntityDataPacket.create(this, t -> ((SuperLootFabTileEntity) t).writeSync());
     }
