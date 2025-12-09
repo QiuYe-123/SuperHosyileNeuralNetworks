@@ -1,5 +1,6 @@
 package cn.qiuye.shnn.gui;
 
+import cn.qiuye.shnn.item.UpgradeMachine;
 import cn.qiuye.shnn.tile.SuperLootFabTileEntity;
 import dev.shadowsoffire.hostilenetworks.Hostile;
 import dev.shadowsoffire.hostilenetworks.data.DataModel;
@@ -8,7 +9,6 @@ import dev.shadowsoffire.hostilenetworks.item.MobPredictionItem;
 import dev.shadowsoffire.placebo.menu.BlockEntityMenu;
 import dev.shadowsoffire.placebo.menu.FilteredSlot;
 import dev.shadowsoffire.placebo.reload.DynamicHolder;
-import net.lmor.extrahnn.item.UpgradeMachine;
 import net.minecraft.MethodsReturnNonnullByDefault;
 import net.minecraft.core.BlockPos;
 import net.minecraft.world.entity.player.Inventory;

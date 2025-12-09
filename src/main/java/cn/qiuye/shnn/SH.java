@@ -3,13 +3,13 @@ package cn.qiuye.shnn;
 import cn.qiuye.shnn.api.Version;
 import cn.qiuye.shnn.block.SuperLootFabBlock;
 import cn.qiuye.shnn.gui.SuperLootFabContainer;
+import cn.qiuye.shnn.item.UpgradeMachine;
 import cn.qiuye.shnn.tile.SuperLootFabTileEntity;
 
 import dev.shadowsoffire.placebo.block_entity.TickingBlockEntityType;
 import dev.shadowsoffire.placebo.menu.MenuUtil;
 import dev.shadowsoffire.placebo.registry.DeferredHelper;
 
-import net.lmor.extrahnn.item.UpgradeMachine;
 import net.minecraft.ChatFormatting;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.network.chat.Component;
