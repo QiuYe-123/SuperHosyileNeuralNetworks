@@ -38,8 +38,8 @@ public class SuperLootFabContainer extends BlockEntityMenu<SuperLootFabTileEntit
             }
         }
 
-        for (int x = 0; x < 6; ++x) {
-            this.addSlot(new FilteredSlot(inv, 2, -13, 39, (s) -> s.getItem() instanceof UpgradeMachine));
+        for (int y = 0; y < 6; ++y) {
+            this.addSlot(new FilteredSlot(inv, 1 + y * 6, 231, 7 + y * 18, (s) -> s.getItem() instanceof UpgradeMachine));
         }
 
         this.addPlayerSlots(pInv, 47, 128);
